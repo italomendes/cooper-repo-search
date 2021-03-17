@@ -74,7 +74,8 @@ import { MatTreeModule } from '@angular/material/tree';
         MatToolbarModule,
         MatTooltipModule,
         MatTreeModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FlexLayoutModule
     ],
     exports: [
         MatAutocompleteModule,
@@ -110,7 +111,8 @@ import { MatTreeModule } from '@angular/material/tree';
         MatToolbarModule,
         MatTooltipModule,
         MatTreeModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FlexLayoutModule
     ],
     providers: [     
     ]
