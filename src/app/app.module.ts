@@ -9,11 +9,14 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoadingTopbarComponent } from './components/loading-topbar/loading-topbar/loading-topbar.component';
+import { LoadingTopbarService } from './services/loading-topbar/loading-topbar.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoadingTopbarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoadingTopbarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

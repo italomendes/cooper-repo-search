@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Repository } from '../models/repository.model';
+import { Repository } from '../../models/repository.model';
 import { catchError, mergeMap } from "rxjs/operators";
 ;
 @Injectable({
