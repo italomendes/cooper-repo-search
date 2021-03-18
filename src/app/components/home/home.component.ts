@@ -13,7 +13,8 @@ import { RepositoriesByUser } from 'src/app/store/repository.actions';
 })
 export class HomeComponent implements OnInit {
 
-  repositories$: Observable<Repository[] | string> = of();
+  repositories$: Observable<Repository[]> = of();
+  userName: string = "";
 
   constructor(private store: Store<AppState>, private repositoryService: RepositoryService) { }
 
@@ -26,5 +27,4 @@ export class HomeComponent implements OnInit {
       this.store.dispatch(new RepositoriesByUser({repositories: repositories}));
     })
   }
-
 }

@@ -3,7 +3,7 @@ import { Repository } from "../models/repository.model";
 import * as fromRepositoryReducer from "./repository.reducer";
 
 export interface AppState {
-    repositories: Repository[] | string;
+    repositories: Repository[];
 }
 
 export const appReducers : ActionReducerMap<AppState, any> = {

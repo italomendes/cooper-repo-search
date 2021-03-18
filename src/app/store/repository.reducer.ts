@@ -1,7 +1,7 @@
 import { Repository } from "../models/repository.model";
 import * as fromRepositoryActions from "./repository.actions";
 
-export const initialState: Repository[] | string = [];
+export const initialState: Repository[] = [];
 
 export function reducer(state = initialState, action: fromRepositoryActions.RepositoriesActions) {
     switch(action.type) {

@@ -7,7 +7,7 @@ export enum RepositoryActionTypes {
 
 export class RepositoriesByUser implements Action {
     readonly type = RepositoryActionTypes.REPOSITORIES_BY_USER;
-    constructor(public payload: {repositories: Repository[] | string}) {}
+    constructor(public payload: {repositories: Repository[]}) {}
 }
 
 export type RepositoriesActions = RepositoriesByUser;
