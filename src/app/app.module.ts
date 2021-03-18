@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './components/home/home.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot(appReducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
