@@ -16,9 +16,14 @@
 </div>
     
 <div class="repo-list">
-    <div *ngIf="(repositories$ | async) === null">
+    <div *ngIf="(repositories$ | async) === null" fxLayout=row fxLayoutAlign="center center">
         Usuário não encontrado!
     </div>
+
+    <div *ngIf="(repositories$ | async)?.length === 0 && !pageIsPristine" fxLayout=row fxLayoutAlign="center center">
+        Usuário sem repositórios!
+    </div>
+
     <div *ngFor="let repository of repositories$ | async">
     
         <mat-expansion-panel>

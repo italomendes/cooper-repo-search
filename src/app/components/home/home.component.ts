@@ -14,10 +14,14 @@ import { RepositoriesByUser } from 'src/app/store/repository.actions';
 })
 export class HomeComponent implements OnInit {
 
-  repositories$: Observable<Repository[]> = of();
+  repositories$: Observable<Repository[]> | undefined;
   userName: string = "";
+  pageIsPristine: boolean = true;
 
-  constructor(private store: Store<AppState>, private repositoryService: RepositoryService, private loadingTopbarService: LoadingTopbarService) { }
+  constructor(private store: Store<AppState>,
+              private repositoryService: RepositoryService,
+              private loadingTopbarService: LoadingTopbarService) {
+  }
 
   ngOnInit(): void {
     this.repositories$ = this.store.pipe(select("repositories"));
@@ -29,5 +33,6 @@ export class HomeComponent implements OnInit {
       this.store.dispatch(new RepositoriesByUser({repositories: repositories}));
       this.loadingTopbarService.hide();
     })
+    this.pageIsPristine = false;
   }
 }
