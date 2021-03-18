@@ -5,3 +5,7 @@
 .repo-list {
     margin: 10px;
 }
+
+.mat-panel-title {
+    font-weight: bold;
+}

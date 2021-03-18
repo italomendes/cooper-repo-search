@@ -2,59 +2,37 @@
     <span>Busca de repositórios do GitHub</span>
 </mat-toolbar>
 
-
-<form>
-    <div fxLayout=row fxLayoutAlign="center center">
-        <mat-form-field>
-            <mat-label>Usuário do GitHub</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <div class="example-button-container" fxLayoutAlign="center center">
-            <button mat-mini-fab aria-label="Buscar repositórios do usuário.">
-              <mat-icon>search</mat-icon>
-            </button>
-        </div>
+<div fxLayout=row fxLayoutAlign="center center">
+    <mat-form-field>
+        <mat-label>Usuário do GitHub</mat-label>
+        <input matInput [(ngModel)]="userName" (keyup.enter)="getRepositoriesByUser(userName)">
+    </mat-form-field>
+    <div fxLayoutAlign="center center">
+        <button mat-mini-fab (click)="getRepositoriesByUser(userName)">
+          <mat-icon>search</mat-icon>
+        </button>
     </div>
-</form>
-
+</div>
+    
 <div class="repo-list">
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Lorem Ipsum
-          </mat-panel-title>
-          <mat-panel-description>
-            Lorem Ipsum
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+    <div *ngIf="(repositories$ | async) === null">
+        Usuário não encontrado!
+    </div>
+    <div *ngFor="let repository of repositories$ | async">
     
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros odio, sodales faucibus rhoncus id, rhoncus vitae nibh. Integer dignissim euismod est, vel blandit nunc sollicitudin ut.
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Lorem Ipsum
-          </mat-panel-title>
-          <mat-panel-description>
-            Lorem Ipsum
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros odio, sodales faucibus rhoncus id, rhoncus vitae nibh. Integer dignissim euismod est, vel blandit nunc sollicitudin ut.
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Lorem Ipsum
-          </mat-panel-title>
-          <mat-panel-description>
-            Lorem Ipsum
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros odio, sodales faucibus rhoncus id, rhoncus vitae nibh. Integer dignissim euismod est, vel blandit nunc sollicitudin ut.
-    </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{repository?.name}}
+              </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end stretch">
+                Criado em: {{repository?.created_at | date:'dd/MM/yyyy'}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <p *ngIf="repository?.description">Descrição: {{repository?.description}}</p>
+            <p><a href="{{repository?.svn_url}}" target="_blank">Visitar repositório</a></p>
+        </mat-expansion-panel>
+    </div>
 </div>
 
