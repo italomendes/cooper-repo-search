@@ -2,21 +2,18 @@
     <span>Busca de repositórios do GitHub</span>
 </mat-toolbar>
 
-
-<form>
-    <div fxLayout=row fxLayoutAlign="center center">
-        <mat-form-field>
-            <mat-label>Usuário do GitHub</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <div class="example-button-container" fxLayoutAlign="center center">
-            <button mat-mini-fab aria-label="Buscar repositórios do usuário.">
-              <mat-icon>search</mat-icon>
-            </button>
-        </div>
+<div fxLayout=row fxLayoutAlign="center center">
+    <mat-form-field>
+        <mat-label>Usuário do GitHub</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <div fxLayoutAlign="center center">
+        <button mat-mini-fab (click)="getRepositoriesByUser('italomendes')">
+          <mat-icon>search</mat-icon>
+        </button>
     </div>
-</form>
-
+</div>
+    
 <div class="repo-list">
     <mat-expansion-panel>
         <mat-expansion-panel-header>
